@@ -1,2 +1,2 @@
-# Algoritmos e Tecnicas de Programacao 2
- Repositório para a Disciplina de Algorítmos e Técnicas de Programação 2
+# Algorítmos e Técnicas de Programação II
+Repositório para a disciplina de Algoritmos e Técnicas de Programação II em 2023
