@@ -4,28 +4,27 @@
 
 //Elisa Yamashita Rodrigues, Renan Alves de Almeida, Vitor Marchini Rolisola
 
+
+
 //funcao para identificar numero primo de forma recursiva
-int primo_recursivo(unsigned int valor, unsigned int i){
-    if(valor%2==0){
-        return 0;
-    }
-    if(i == 1){
+int primo_recursivo(unsigned int valor, unsigned int divisor){
+    if(divisor <= 1){
         return 1; //Chegou ao fim da recursao sem encontrar divisores
     }
-    if(valor % i == 0){
+    if(valor % divisor == 0){
         return 0; //Encontrou um divisor, nao e primo
     }
-    return primo_recursivo(valor, i - 1);
+    return primo_recursivo(valor, divisor - 1);
 }
 
-//funcao para identificar numero primo de forma interativa
+//funcao para identificar numero primo de forma iterativa
 int primo_iterativo(unsigned int valor){
-    for(unsigned  int i = 2 ; i <= sqrt(valor) ; i++){
+    for(unsigned  int i = 3 ; i*i <= valor ; i = i+2){
         if(valor % i == 0){
-            return 0;
+            return 0; //Encontrou um divisor, nao e primo
         }
     }
-    return 1;
+    return 1; //Nao encontrou divisor, e primo
 }
 
 int main(){
@@ -35,9 +34,11 @@ int main(){
         printf("Digite um numero inteiro positivo, 0 para sair:\n");
         scanf("%u", &valor);
 
-        //if( valor % 2 == 0){
-          //  printf("%u e numero par\n", valor);
-        //}else{
+        if(valor == 2){
+            printf("%u e numero primo\n", valor);
+        } else if(((valor % 2 == 0) && (valor != 2)) || (valor == 1)){
+            printf("%u nao e numero primo\n", valor);
+        }else{
             /*modo iterativo*/
             if(primo_iterativo(valor)){
                 printf("%u e um numero primo (iterativo)\n", valor);
@@ -51,7 +52,7 @@ int main(){
             }else{
                 printf("%u nao e um numero primo (recursivo)\n", valor);
             }
-        //}
+        }
     }while(valor != 0);
 
     return 0;
